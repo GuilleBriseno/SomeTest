@@ -277,19 +277,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Simulation settings}
-\underline{True data generating process:}\\
-Signal variables:
-\begin{center}
-\begin{tabular}{cccc}
-(instrument) & (endogenous) & (unobserved) & \quad (exogenous) \\
-$x_{IV}$ &  $x_{en}$ & $x_{u}$ & $x_{exo1} \quad x_{exo2} \quad x_{exo3}$ 
-\end{tabular}
-\end{center}
 
-Around 10 noise variables, denoted by: $x^{noise}_s$, $s = 1, \dots, 10$. All noise covariates have the following distribution: $x^{noise}_s \sim \mathcal{N}(1,3^2), \quad \forall$ $s = 1,\dots, 10.$
-We will focus on binary endogenous variables, i.e.\ endogenous binary treatments.
-
-Sample $N$ observations of the exogenous regressors, unobserved confounder, and the instrument from independent, univariate Uniform distributions:
 \begin{equation*}
     x_{exo_1} \sim \mathcal{U}[0,1], \quad x_{exo_2} \sim \mathcal{U}[0,1], \quad   x_{exo_3} \sim \mathcal{U}[0,1], \quad x_{u} \sim \mathcal{U}[0,1], \quad  x_{IV} \sim \mathcal{U}[0,1] 
     \label{datageneration}
