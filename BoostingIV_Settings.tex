@@ -154,69 +154,7 @@
 \newcommand{\HRule}{\rule{\linewidth}{0.6mm}} % Defines a new command for the horizontal lines, change thickness here
 %\center % Center everything on the page
  
-%----------------------------------------------------------------------------------------
-%	TITLE SECTION
-%----------------------------------------------------------------------------------------
 
-%\begin{spacing}{1.5}
-%{\vspace{-4cm} \Large Flexible Instrumental Variables Distributional Regression:}\\[.35cm]
-%{\Large A Simulation and Empirical Study}\\% Title of your document
-%\end{spacing}
-%\HRule \\[4cm]
-
-%----------------------------------------------------------------------------------------
-%	HEADING SECTIONS
-%----------------------------------------------------------------------------------------
-%\textsc{Georg-August Universität G\"ottingen}\\[1.5cm] % Name of your university/college
-%\textsc{Master of Science's Thesis}\\[0.5cm] % Major heading such as course name
-
-%\text{\large Master Thesis presented to the Department of Economics at the}\\[.3cm]
-%\text{\large Georg-August-University G\"ottingen} \\[.3cm]
-%\text{\large with a working time of 20 weeks}\\[3cm]
-
-%\text{\large In partial fulfillment of the requirements for the degree}\\[.3cm]
-%\text{\large Master of Science (M.Sc.)}\\[4cm]
-
-%----------------------------------------------------------------------------------------
-%	AUTHOR SECTION
-%----------------------------------------------------------------------------------------
-%\begin{minipage}{0.4\textwidth}
-%\begin{flushleft} \large
-%Author:\\
-%Guillermo Briseño Sanchez\\
-%Student ID: 21565589
-%\end{flushleft}
-%\end{minipage}
-%~
-%\begin{minipage}{0.4\textwidth}
-%\begin{flushright} \large
-%Supervisors: \\
-%Prof. Dr. Thomas Kneib\\ % Supervisor's Name
-%Maike Hohberg, M.A.
-%\end{flushright}
-%\end{minipage}\\[1cm]
-
-%\text{\large Guillermo Briseño Sanchez}\\
-%\text{from: Nuevo Laredo, Mexico}\\
-%\text{(21565589)}\\[2cm]
-
-%\text{Supervised by:}\\
-%\text{Prof. Dr. Thomas Kneib}\\
-%\text{Maike Hohberg, M.A.}\\[.7cm]
-
-%----------------------------------------------------------------------------------------
-%	DATE SECTION
-%----------------------------------------------------------------------------------------
-%{Submitted: February 2, 2018}\\[3.2cm] % Date, change the \today to a set date if you want to be %precise
-%----------------------------------------------------------------------------------------
-%	LOGO SECTION
-%----------------------------------------------------------------------------------------
-%\includegraphics{figures/logo}\\[1cm]
- 
-%----------------------------------------------------------------------------------------
-%\vfill % Fill the rest of the page with whitespace
-%\end{titlepage}
-%\restoregeometry
 
 
 \thispagestyle{empty}
@@ -241,59 +179,6 @@
 %\rfoot{\thepage}
 %\renewcommand{\headrulewidth}{1pt}
 %\renewcommand{\footrulewidth}{1pt}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%             2   S   G   A   M   L   S   S
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Simulation settings}
-\underline{True data generating process:}\\
-Signal variables:
-\begin{center}
-\begin{tabular}{cccc}
-(instrument) & (endogenous) & (unobserved) & \quad (exogenous) \\
-$x_{IV}$ &  $x_{en}$ & $x_{u}$ & $x_{exo1} \quad x_{exo2} \quad x_{exo3}$ 
-\end{tabular}
-\end{center}
-
-Around 10 noise variables, denoted by: $x^{noise}_s$, $s = 1, \dots, 10$. All noise covariates have the following distribution: $x^{noise}_s \sim \mathcal{N}(1,3^2), \quad \forall$ $s = 1,\dots, 10.$
-We will focus on binary endogenous variables, i.e.\ endogenous binary treatments.
-
-Sample $N$ observations of the exogenous regressors, unobserved confounder, and the instrument from independent, univariate Uniform distributions:
-\begin{equation*}
-    x_{exo_1} \sim \mathcal{U}[0,1], \quad x_{exo_2} \sim \mathcal{U}[0,1], \quad   x_{exo_3} \sim \mathcal{U}[0,1], \quad x_{u} \sim \mathcal{U}[0,1], \quad  x_{IV} \sim \mathcal{U}[0,1] 
-    \label{datageneration}
-    \end{equation*}
-Generate the additive predictor of endogenous regressor: 
-    \begin{align*}
-    \eta^{en} &= \phi_1 f_d(x_u) + \phi_2 f_d(x_{IV})
-    \end{align*}
-Obtain the location parameter of the endogenous regressor’s distribution by applying the inverse logit function to the additive predictor $\eta^{en}_{}$. Sample $N$ observations of $x_{en}$ from the desired distribution.
-    \begin{align*}
-    \vartheta^{en} &= g_1(\eta^{en})^{-1}  = \frac{\exp(\eta^{en})}{1+\exp(\eta^{en})}\\
-    x_{en} &\sim Bin(1,\vartheta^{en}_{})
-    \end{align*}
-Using the sampled binary treatment $x_{en}$, generate the response $y$ from an arbitrary distribution by applying a non-linear function to the covariates, e.g.
-    \begin{align*}
-    \eta^{y}_{1} &= f_{d}(x_{exo1}) + f_{d}(x_{exo3}) + x_{en}\beta_{en} + f_d(x_u) \\
-    \eta^{y}_{2} &= f_{d}(x_{exo2}) + f_{d}(x_{exo3}) +  x_{en}\gamma_{en} + f_d(x_u) 
-    \end{align*}
-    Obtain the response distribution parameters by applying a suitable response function to each additive predictor $\eta^{y}_{1}$ and $\eta^{y}_{2}$. Sample $N$ observations of $y$ from the desired conditional response distribution
-    \begin{align*}
-    \vartheta^{y}_{k} &= g_k(\eta^{y}_k)^{-1} \\
-    y &\sim f_y(y|\vartheta^{y}_{1}, \dots, \vartheta^{y}_{K})
-    \label{responsegeneration}
-    \end{align*}
-Where $f_d(\bigcdot)$ are some non-linear functions. The parameters $\phi_1, \phi_2$ are used to regulate the strength of the instrument: $\rho(f_d(x_{IV}), x_{en})$, and the severeness of the endogeneity: $\rho(x_{en},f_d(x_{u}))$.  
-
-
 
 \pagebreak
 
